@@ -41,7 +41,7 @@ const AdminPanel = () => {
   };
 
   const handleAddBusiness = () => {
-    if (!formData.name || !formData.category || !formData.description || !formData.phoneNumber || !formData.address || !formData.city || !formData.state || !formData.zip) {
+    if (!formData.name || !formData.category  || !formData.phoneNumber || !formData.address || !formData.city || !formData.state || !formData.zip) {
       toast.error("All fields are required.");
       return;
     }
