@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom"
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('user'); // Default to 'user'
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle login logic here, e.g., API call
-    alert(`Logging in as ${userType} with username: ${username}`);
+    alert(`Logging in as ${userType} with username: ${email}`);
   };
 
   return (
@@ -18,11 +19,11 @@ const LoginPage = () => {
         
         <form onSubmit={handleSubmit} className="flex flex-col">
           <div className="mb-4">
-            <label className="block mb-1 font-bold">Username:</label>
+            <label className="block mb-1 font-bold">Email:</label>
             <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
@@ -36,7 +37,11 @@ const LoginPage = () => {
               className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+           <div className='text-end'>
+           <Link to="/forget-password" className='my-2 cursor-pointer text-red-500'>Forget password ?</Link>
+           </div>
           </div>
+          
           
           {/* User Type Selection */}
           <div className="mb-4">
