@@ -11,6 +11,7 @@ import RegisterPage from './components/Register';
 import Footer from './components/Footer';
 import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';
+import ForgetPassword from './pages/ForgetPassword';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
               <Route path='/register' element={<RegisterPage />} />
               <Route path='/about' element={<AboutPage />} />
               <Route path='/login' element={<LoginPage />} />
+              <Route path='/forget-password' element={<ForgetPassword />} />
             </Routes>
           </div>
         </div>
