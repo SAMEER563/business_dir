@@ -1,6 +1,8 @@
 // BusinessDetails.js
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import {IoMdArrowRoundBack} from 'react-icons/io'
+
 
 const businesses = [
   { id: 1, name: 'Restaurant A', category: 'Restaurants', description: 'Delicious food here.', phoneNumber: '123-456-7890', email: 'info@gmail.com', address: '123 Main St', city: 'City', state: 'State', zip: '12345', imgUrl: 'https://cdn.pixabay.com/photo/2016/11/19/17/02/chinese-1840332_1280.jpg' },
@@ -22,6 +24,9 @@ const BusinessDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-5">
+      <Link to='/businesses'>
+            <IoMdArrowRoundBack className='m-2 text-2xl' />
+          </Link>
       <img src={business.imgUrl} alt={business.name} className="w-full h-64 object-cover rounded-lg mt-10" />
       <h1 className="text-3xl font-bold mb-2 mt-6">{business.name}</h1>
       <p className="text-gray-700 text-lg mb-4">{business.description}</p>
