@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card';  // Importing Card component
 
-// Dummy categories and businesses data (similar to Businesses.js)
+// Dummy categories and businesses data
 const categories = ['All', 'Restaurants', 'Retail', 'Services', 'Technology', 'Health', 'Entertainment'];
 const businesses = [
   { id: 1, name: 'Restaurant A', category: 'Restaurants', description: 'Delicious food here.', phoneNumber: '123-456-7890', email: 'info@gmail.com', address: '123 Main St', city: 'City', state: 'State', zip: '12345', imgUrl: 'https://cdn.pixabay.com/photo/2016/11/19/17/02/chinese-1840332_1280.jpg' },
@@ -15,12 +15,19 @@ const businesses = [
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');  // Category filter state
+  const [searchQuery, setSearchQuery] = useState('');  // Search query state
   const navigate = useNavigate();  // Hook to navigate between pages
 
-  // Filter businesses by selected category
-  const filteredBusinesses = selectedCategory === 'All'
-    ? businesses
-    : businesses.filter((business) => business.category === selectedCategory);
+  // Filter businesses by selected category and search query
+  const filteredBusinesses = businesses.filter((business) => {
+    // Match category
+    const matchesCategory = selectedCategory === 'All' || business.category === selectedCategory;
+
+    // Match search query
+    const matchesSearch = business.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   // Handle card click to navigate to business details
   const handleBusinessClick = (id) => {
@@ -48,6 +55,8 @@ const Home = () => {
               placeholder="Search Your Required Business" 
               className="w-full py-2 border-none outline-none"
               aria-label="Search for businesses"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}  // Update search query state
             />
             <button className="bg-purple-500 text-white px-4 py-2 rounded-full" aria-label="Search Button">
               Search
@@ -105,7 +114,7 @@ const Home = () => {
               </div>
             ))
           ) : (
-            <p>No businesses found in this category.</p>
+            <p>No businesses found matching your search.</p>
           )}
         </div>
 
