@@ -16,6 +16,7 @@ import UserList from './pages/UserList'
 import BusinessList from './pages/BusinessList'
 import EditUser from './pages/EditUser'
 import EditBusiness from './pages/EditBusiness'
+import Home from './pages/Home'
 
 
 
@@ -49,6 +50,7 @@ const App = () => {
                  <Route path="/business/:id" element={<BusinessDetails token={token} />} />
                  <Route path='/admin/edit-user/:id' element={<EditUser token={token} />} />
                  <Route path="/admin/edit-business/:id" element={<EditBusiness />} />
+                 <Route path='/' element={<Home />} />  
 
                </Routes>
             </div>
